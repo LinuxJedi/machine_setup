@@ -3,7 +3,8 @@ alias grep='grep --color=auto -n'
 unamestr=`uname`
 if [[ "$unamestr" == 'Darwin' ]]; then
     alias vim='/usr/local/bin/mvim'
-    alias git=/usr/local/git/bin/git
+    alias git='/usr/local/git/bin/git'
+    alias grep='/usr/local/bin/ggrep --color=auto -n'
 fi
 
 set_prompt () {
@@ -29,7 +30,8 @@ set_prompt () {
     # Print the working directory and prompt marker in blue, and reset
     # the text color to the default.
     PS1+='\[\e[01;34m\] \w \$\[\e[00m\] '
+    if [[ "`uname`" == 'Darwin' ]]; then
+        update_terminal_cwd
+    fi
 }
 PROMPT_COMMAND='set_prompt'
-
-export PATH=$PATH:/Applications/microchip/xc8/v1.33/bin
