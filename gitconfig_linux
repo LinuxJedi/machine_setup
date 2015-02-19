@@ -1,0 +1,7 @@
+[user]
+	name = Andrew Hutchings
+	email = andrew@linuxjedi.co.uk
+[push]
+    default = simple
+[core]
+	editor = /usr/bin/vim
