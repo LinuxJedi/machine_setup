@@ -10,26 +10,30 @@ fi
 set_prompt () {
     local last_command=$?  # Must come first!
     PS1=""
-    # Add a bright white exit status for the last command
-    PS1+='\[\e[01;37m\]$? '
-    # If it was successful, print a green check mark. Otherwise, print
-    # a red X.
+    # Add an exit status for the last command
     if [[ $last_command == 0 ]]; then
-        PS1+='\[\e[01;32m\]\342\234\223 '
+        PS1+='\[\e[01;32m\]$? '
     else
-        PS1+='\[\e[01;31m\]\342\234\227 '
+        PS1+='\[\e[01;33m\]$? '
     fi
     # If root, just print the host in red. Otherwise, print the current user
-    # and host in green.
-    # in 
+    # and host in cyan.
+    # in
     if [[ $EUID == 0 ]]; then
-        PS1+='\[\e[01;31m\]\h '
+        PS1+='\[\e[01;31m\]\u@\h '
     else
-        PS1+='\[\e[01;32m\]\u@\h '
+        PS1+='\[\e[01;36m\]\u@\h '
     fi
-    # Print the working directory and prompt marker in blue, and reset
+    # Print the working directory and prompt marker in purple, and reset
     # the text color to the default.
-    PS1+='\[\e[01;34m\] \w \$\[\e[00m\] '
+    PS1+='\[\e[01;35m\]\w '
+    if [[ $EUID == 0 ]]; then
+        PS1+='#'
+    else
+        PS1+='\$'
+    fi
+    PS1+='\[\e[00m\] '
+    # Update Mac OS X terminal heading
     if [[ "`uname`" == 'Darwin' ]]; then
         update_terminal_cwd
     fi
