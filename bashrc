@@ -3,7 +3,7 @@ alias grep='grep --color=auto -n'
 unamestr=`uname`
 if [[ "$unamestr" == 'Darwin' ]]; then
     alias vim='/usr/local/bin/mvim'
-    alias git='/usr/local/git/bin/git'
+    alias git='/usr/local/bin/git'
     alias grep='/usr/local/bin/ggrep --color=auto -n'
 fi
 
