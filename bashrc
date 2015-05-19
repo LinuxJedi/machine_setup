@@ -1,4 +1,5 @@
-alias ls='ls -G'
+alias ls='ls -GFh'
+export LSCOLORS='Fxfxcxdxbxegedabagacad'
 alias grep='grep --color=auto -n'
 unamestr=`uname`
 if [[ "$unamestr" == 'Darwin' ]]; then
